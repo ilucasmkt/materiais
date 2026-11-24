@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O kit do lead parado · Lucas Silva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --grafite:#0B1220; --petroleo:#0E7490; --ciano:#22D3EE;
+  --cinza:#475569; --cinza2:#8A94A6; --fundo:#F1F5F9; --branco:#FFFFFF;
+  --ok:#1F8A4C; --atencao:#F2B705; --urgente:#C8372D;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;color:var(--grafite);background:var(--fundo);line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:"Plus Jakarta Sans",Inter,Arial,sans-serif;font-weight:800;line-height:1.15;color:var(--grafite)}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+
+/* capa */
+.capa{background:var(--grafite);color:#fff;padding:64px 0 56px}
+.capa h1{color:#fff;font-size:clamp(32px,6vw,52px);margin:18px 0 18px}
+.capa p.sub{font-size:20px;color:#CBD5E1;max-width:620px}
+.tag{display:inline-block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ciano);font-weight:600}
+.elos{display:flex;gap:6px;margin-top:34px;flex-wrap:wrap;align-items:center}
+.elo{padding:8px 14px;border-radius:999px;border:1.5px solid #334155;color:#94A3B8;font-size:14px;font-weight:600}
+.elo.on{background:var(--petroleo);border-color:var(--petroleo);color:#fff}
+.elo-sep{color:#334155}
+
+/* seções */
+section{padding:46px 0 6px}
+section h2{font-size:clamp(24px,4vw,32px);margin-bottom:6px}
+.num{display:inline-block;background:var(--petroleo);color:#fff;border-radius:8px;padding:2px 11px;margin-right:10px;font-size:.8em}
+.lead{color:var(--cinza);margin:8px 0 22px}
+.card{background:var(--branco);border-radius:14px;padding:24px 26px;margin:16px 0;border:1px solid #E2E8F0}
+.card.dest{border-left:5px solid var(--petroleo)}
+ul.checks{list-style:none}
+ul.checks li{padding:6px 0 6px 30px;position:relative}
+ul.checks li::before{content:"";position:absolute;left:0;top:11px;width:17px;height:17px;border:2px solid var(--petroleo);border-radius:5px}
+ul.nao li::before{border-color:var(--urgente)}
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.passo{background:var(--branco);border-radius:14px;padding:20px;border:1px solid #E2E8F0}
+.passo b{display:block;font-family:"Plus Jakarta Sans",Inter,sans-serif;font-size:30px;color:var(--petroleo)}
+@media(max-width:640px){.passos{grid-template-columns:1fr}}
+
+/* mensagens */
+.msg{background:var(--branco);border-radius:14px;border:1px solid #E2E8F0;margin:16px 0;overflow:hidden}
+.msg-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 18px;background:#F8FAFC;border-bottom:1px solid #E2E8F0}
+.msg-top strong{font-family:"Plus Jakarta Sans",Inter,sans-serif;font-size:16px}
+.msg-top span.dia{color:var(--petroleo);font-weight:600;font-size:14px}
+.msg-txt{padding:18px 20px;white-space:pre-line;font-size:16px;background:#fff}
+.msg-faz{padding:12px 20px 16px;color:var(--cinza);font-size:15px;border-top:1px dashed #E2E8F0}
+.msg-faz b{color:var(--grafite)}
+button.copiar{font:600 13px Inter,sans-serif;background:var(--petroleo);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+button.copiar:hover{background:#0B5E74}
+button.copiar.ok{background:var(--ok)}
+
+/* tabelas */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;background:#fff;border-radius:10px;overflow:hidden}
+th{background:var(--grafite);color:#fff;text-align:left;padding:10px 12px;font-weight:600}
+td{padding:10px 12px;border-bottom:1px solid #E2E8F0;vertical-align:top}
+.est{display:inline-block;padding:2px 10px;border-radius:999px;font-weight:700;font-size:12px;color:#fff}
+.est.v{background:var(--ok)}.est.a{background:var(--atencao);color:var(--grafite)}.est.r{background:var(--urgente)}
+.rotulo{display:inline-block;background:var(--atencao);color:var(--grafite);font-size:12px;font-weight:700;padding:2px 10px;border-radius:6px;margin-bottom:10px}
+
+/* ia */
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.duas{grid-template-columns:1fr}}
+.duas .card h3{font-size:18px;margin-bottom:10px}
+.pode h3{color:var(--ok)}.naopode h3{color:var(--urgente)}
+.duas ul{padding-left:20px}.duas li{margin:6px 0}
+
+/* final */
+.proximo{background:var(--grafite);color:#fff;border-radius:16px;padding:30px;margin:40px 0}
+.proximo h2{color:#fff;font-size:24px}
+.proximo p{color:#CBD5E1;margin-top:10px}
+footer{padding:26px 0 50px;color:var(--cinza2);font-size:14px}
+.assina{display:flex;align-items:center;gap:10px;color:var(--grafite);font-weight:600;font-size:15px}
+.assina i{display:block;width:34px;height:4px;background:var(--ciano);border-radius:2px}
+@media print{
+  body{background:#fff;font-size:14px}.capa{padding:30px 0}
+  button.copiar{display:none}.card,.msg,.passo{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <div class="wrap">
+    <span class="tag">Kit de mensagens · 10 minutos</span>
+    <h1>O kit do lead parado</h1>
+    <p class="sub">Em 10 minutos você separa quem vale chamar de novo e tem as mensagens prontas para copiar e colar.</p>
+    <div class="elos" aria-label="Os 4 elos">
+      <span class="elo">Atrair</span><span class="elo-sep">→</span>
+      <span class="elo on">Atender</span><span class="elo-sep">→</span>
+      <span class="elo">Organizar</span><span class="elo-sep">→</span>
+      <span class="elo">Fechar</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section>
+  <h2>Como usar em 3 passos</h2>
+  <div class="passos">
+    <div class="passo"><b>1</b>Separe a lista de quem chamar (seção 1).</div>
+    <div class="passo"><b>2</b>Copie a mensagem do dia e troque o que está entre [colchetes] (seção 2).</div>
+    <div class="passo"><b>3</b>Anote cada resposta na tabela de controle (seção 4) e avise quem vai conversar.</div>
+  </div>
+</section>
+
+<section id="quem">
+  <h2><span class="num">1</span>Quem chamar (e quem não)</h2>
+  <p class="lead">Prospecção ativa, aqui, é voltar em quem <b>já levantou a mão</b>. Não é escrever para quem nunca ouviu falar de você.</p>
+  <div class="duas">
+    <div class="card pode dest">
+      <h3>Entra na lista se...</h3>
+      <ul class="checks">
+        <li>a pessoa pediu contato, orçamento ou material</li>
+        <li>ela <b>autorizou</b> o seu contato (formulário ou conversa)</li>
+        <li>a última conversa foi há mais de 7 dias</li>
+        <li>ela nunca disse "não" nem "pare"</li>
+      </ul>
+    </div>
+    <div class="card naopode" style="border-left:5px solid var(--urgente)">
+      <h3 style="color:var(--urgente)">Fica de fora se...</h3>
+      <ul class="checks nao">
+        <li>pediu para não ser chamada</li>
+        <li>nunca autorizou o contato</li>
+        <li>já comprou ou já está em conversa com o time</li>
+        <li>é uma lista comprada ou copiada de algum lugar</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="mensagens">
+  <h2><span class="num">2</span>As 4 mensagens</h2>
+  <p class="lead">Cada uma cita <b>o que a pessoa pediu</b>. É isso que separa uma mensagem de retorno de um spam. Uma por vez, sem juntar duas no mesmo dia.</p>
+
+  <div class="msg">
+    <div class="msg-top"><strong>Mensagem 1 · Retomar</strong><span class="dia">Dia 0</span><button class="copiar" data-alvo="m1">Copiar</button></div>
+    <div class="msg-txt" id="m1">Oi, [nome]. Aqui é o [seu nome], da [empresa]. Você pediu [o que a pessoa pediu] há uns dias e a conversa ficou parada do nosso lado. Ainda faz sentido para você? Se não for mais o momento, é só me dizer.</div>
+    <div class="msg-faz"><b>O que faz:</b> assume que a pausa foi sua, cita o pedido e dá uma saída fácil.</div>
+  </div>
+
+  <div class="msg">
+    <div class="msg-top"><strong>Mensagem 2 · Ajudar</strong><span class="dia">Dia 3</span><button class="copiar" data-alvo="m2">Copiar</button></div>
+    <div class="msg-txt" id="m2">[nome], lembrei de você porque [uma informação útil sobre o que ela pediu: um prazo, uma novidade, uma resposta à dúvida que ela tinha]. Se quiser, te explico em 2 minutos por aqui.</div>
+    <div class="msg-faz"><b>O que faz:</b> entrega algo útil antes de pedir qualquer coisa.</div>
+  </div>
+
+  <div class="msg">
+    <div class="msg-top"><strong>Mensagem 3 · Pergunta única</strong><span class="dia">Dia 7</span><button class="copiar" data-alvo="m3">Copiar</button></div>
+    <div class="msg-txt" id="m3">[nome], uma pergunta só: o que ficou faltando para você decidir sobre [assunto]? Pode ser sincero(a), me ajuda a entender.</div>
+    <div class="msg-faz"><b>O que faz:</b> descobre o motivo real da pausa (preço, prazo, outra empresa, falta de tempo).</div>
+  </div>
+
+  <div class="msg">
+    <div class="msg-top"><strong>Mensagem 4 · Fechar com educação</strong><span class="dia">Dia 12</span><button class="copiar" data-alvo="m4">Copiar</button></div>
+    <div class="msg-txt" id="m4">[nome], vou encerrar o assunto do meu lado para não incomodar. Se fizer sentido mais para a frente, é só me chamar aqui. Obrigado pela atenção!</div>
+    <div class="msg-faz"><b>O que faz:</b> encerra sem pressão. É comum a resposta chegar justamente aqui.</div>
+  </div>
+</section>
+
+<section id="parar">
+  <h2><span class="num">3</span>Quando parar</h2>
+  <div class="card dest">
+    <ul class="checks">
+      <li><b>Parou na hora:</b> a pessoa disse "não", "pare" ou pediu para não ser chamada. Marque na tabela e não mande mais nada.</li>
+      <li><b>Parou depois da 4ª mensagem:</b> sem resposta, o lead sai da lista. Só volta se a pessoa chamar.</li>
+      <li><b>Passou para uma pessoa:</b> se respondeu qualquer coisa, a conversa deixa de ser automática e vai para um vendedor.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="controle">
+  <h2><span class="num">4</span>A tabela de controle</h2>
+  <p class="lead">Uma linha por pessoa. Assim o gestor vê quem voltou, quem sumiu e quem pediu para parar. Copie para a sua planilha.</p>
+  <span class="rotulo">Exemplo · valores de exemplo</span>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Nome</th><th>O que pediu</th><th>Última conversa</th><th>Mensagem enviada</th><th>Respondeu?</th><th>Situação</th></tr></thead>
+    <tbody>
+      <tr><td>Ana (exemplo)</td><td>Orçamento do serviço</td><td>12 dias atrás</td><td>2 · Ajudar</td><td>Sim</td><td><span class="est v">Passou ao vendedor</span></td></tr>
+      <tr><td>Bruno (exemplo)</td><td>Material em PDF</td><td>30 dias atrás</td><td>1 · Retomar</td><td>Não</td><td><span class="est a">Aguardando</span></td></tr>
+      <tr><td>Carla (exemplo)</td><td>Reunião de apresentação</td><td>45 dias atrás</td><td>3 · Pergunta única</td><td>"Não é o momento"</td><td><span class="est r">Parar</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="ia">
+  <h2><span class="num">5</span>O que a IA pode e o que não pode fazer sozinha</h2>
+  <p class="lead">Se você usar um robô para mandar essas mensagens, divida o trabalho assim. A IA chama. Quem conversa e fecha é o seu time.</p>
+  <div class="duas">
+    <div class="card pode">
+      <h3>Pode fazer sozinha</h3>
+      <ul>
+        <li>montar a lista de quem chamar, com o seu filtro</li>
+        <li>mandar as mensagens 1 a 4 nos dias certos</li>
+        <li>citar o que a pessoa pediu</li>
+        <li>parar quando a pessoa disser "não"</li>
+        <li>avisar o vendedor quando alguém responder</li>
+      </ul>
+    </div>
+    <div class="card naopode">
+      <h3>Não pode fazer sozinha</h3>
+      <ul>
+        <li>negociar preço ou prazo</li>
+        <li>prometer algo que a empresa não confirmou</li>
+        <li>insistir depois de um "não"</li>
+        <li>chamar quem nunca autorizou o contato</li>
+        <li>fechar a venda</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card dest">
+    <b>O aviso ao vendedor precisa ter:</b>
+    <ul class="checks" style="margin-top:8px">
+      <li>nome e telefone da pessoa</li>
+      <li>o que ela pediu da primeira vez</li>
+      <li>a conversa até aqui (o que foi enviado e o que ela respondeu)</li>
+      <li>a resposta de agora, em destaque</li>
+    </ul>
+  </div>
+</section>
+
+<section id="cuidado">
+  <h2><span class="num">6</span>Antes de enviar a primeira</h2>
+  <div class="card dest">
+    <ul class="checks">
+      <li>Confirme que cada pessoa da lista <b>autorizou</b> o contato (a Lei Geral de Proteção de Dados exige).</li>
+      <li>Em toda mensagem, deixe claro como parar de receber: basta responder "parar".</li>
+      <li>Mande poucas por dia no começo e veja se o número está sendo bloqueado.</li>
+      <li>Teste primeiro com 5 pessoas e leia as respostas antes de ampliar.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="proximo">
+  <h2>O próximo passo</h2>
+  <p>Escolha 10 leads parados e mande a mensagem 1 hoje. Se quiser olhar isso junto, é só pedir uma conversa de 30 minutos.</p>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="assina"><i></i>Lucas Silva</div>
+    <p style="margin-top:8px">Este material é gratuito e não promete resultado: os exemplos usam nomes e valores fictícios.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('button.copiar').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=document.getElementById(b.dataset.alvo).innerText.trim();
+    var fim=function(){b.textContent='Copiado ✓';b.classList.add('ok');setTimeout(function(){b.textContent='Copiar';b.classList.remove('ok')},1800)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(fim)}
+    else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();fim()}
+  });
+});
+</script>
+</body>
+</html>
